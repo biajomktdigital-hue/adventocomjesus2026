@@ -2,16 +2,27 @@ import { Children, cloneElement, useEffect, useRef, useState } from 'react';
 import { BookOpen, Check, ChevronLeft, ChevronRight, CreditCard, Download, Gift, Heart, Mail, MonitorSmartphone, Printer, Scissors, ShieldCheck, Star, Users } from 'lucide-react';
 import { content } from './content.js';
 import { comercial } from './comercial.js';
+import posterImage from './poster.webp';
+import estrelasImage from './estrelas.webp';
+import devocionalImage from './devocional.webp';
+import jogosImage from './jogos.webp';
+import colorirImage from './colorir.webp';
+import livroColorirImage from './livro-colorir.jpg';
+import natalPropositoImage from './natal-proposito.jpg';
+import receitasNatalinasImage from './receitas-natalinas.jpg';
+import devocionalDia22Image from './devocional-dia-22.jpg';
+import devocionalDia23Image from './devocional-dia-23.jpg';
+import devocionalDia24Image from './devocional-dia-24.jpg';
 
 const painIcons = [BookOpen, Star, Scissors, Printer, Users, Heart];
 const mechanismIcons = [BookOpen, Users, Star, Heart];
 const materials = [
-  ['/assets/poster.webp', 'Pôster do Advento', 'Pôster ilustrado com os 24 dias do Advento com Jesus'],
-  ['/assets/estrelas.webp', 'Estrelinhas para colar', 'Folha com as 24 estrelinhas numeradas da jornada'],
-  ['/assets/devocional.webp', 'Guia devocional', 'Guia Devocional para as Famílias'],
-  ['/assets/novos/livro-colorir.jpg', 'Livro de colorir', 'Livro de colorir Advento com Jesus'],
-  ['/assets/novos/natal-proposito.jpg', 'Natal com Propósito', 'Jogos e brincadeiras para reunir a família na ceia de Natal'],
-  ['/assets/novos/receitas-natalinas.jpg', 'Receitas natalinas', 'Receitas natalinas para as crianças']
+  [posterImage, 'Pôster do Advento', 'Pôster ilustrado com os 24 dias do Advento com Jesus'],
+  [estrelasImage, 'Estrelinhas para colar', 'Folha com as 24 estrelinhas numeradas da jornada'],
+  [devocionalImage, 'Guia devocional', 'Guia Devocional para as Famílias'],
+  [livroColorirImage, 'Livro de colorir', 'Livro de colorir Advento com Jesus'],
+  [natalPropositoImage, 'Natal com Propósito', 'Jogos e brincadeiras para reunir a família na ceia de Natal'],
+  [receitasNatalinasImage, 'Receitas natalinas', 'Receitas natalinas para as crianças']
 ];
 
 function CTA({ label = 'QUERO CONHECER OS KITS', href = '#oferta' }) {
@@ -24,10 +35,10 @@ function SectionTitle({ children, lead }) {
 
 function ProductComposition({ compact = false, memorable = false }) {
   return <div className={`product-composition advento-composition${compact ? ' product-composition--compact' : ''}`} aria-label={memorable ? 'Coleção do Kit Natal Memorável' : 'Pôster, guia devocional e estrelinhas do Advento com Jesus'}>
-    <img className="product-sheet product-sheet--left" src="/assets/poster.webp" alt="Pôster ilustrado do Advento com Jesus" loading={compact ? 'lazy' : undefined} />
-    <img className="product-sheet product-sheet--right" src={memorable ? '/assets/jogos.webp' : '/assets/estrelas.webp'} alt={memorable ? 'Jogos e dinâmicas Natal com Propósito' : 'Folha de estrelinhas da jornada'} loading={compact ? 'lazy' : undefined} />
-    <img className="product-cover" src="/assets/devocional.webp" alt="Guia Devocional para Famílias" loading={compact ? 'lazy' : undefined} fetchPriority={compact ? undefined : 'high'} />
-    {memorable && <img className="product-extra" src="/assets/colorir.webp" alt="Livro de colorir do Advento com Jesus" loading="lazy" />}
+    <img className="product-sheet product-sheet--left" src={posterImage} alt="Pôster ilustrado do Advento com Jesus" loading={compact ? 'lazy' : undefined} />
+    <img className="product-sheet product-sheet--right" src={memorable ? jogosImage : estrelasImage} alt={memorable ? 'Jogos e dinâmicas Natal com Propósito' : 'Folha de estrelinhas da jornada'} loading={compact ? 'lazy' : undefined} />
+    <img className="product-cover" src={devocionalImage} alt="Guia Devocional para Famílias" loading={compact ? 'lazy' : undefined} fetchPriority={compact ? undefined : 'high'} />
+    {memorable && <img className="product-extra" src={colorirImage} alt="Livro de colorir do Advento com Jesus" loading="lazy" />}
     <div className="quantity-seal"><strong>24</strong><span>DIAS DE<br/>ADVENTO</span></div>
   </div>;
 }
@@ -42,20 +53,20 @@ function MaterialsMockup() {
 
 function CollectionComposition({ compact = false }) {
   return <div className="collection-composition" aria-label="Materiais dos kits Advento com Jesus">
-    <img className="collection-item collection-item--poster" src="/assets/poster.webp" alt="Pôster do Advento" loading="lazy" />
-    <img className="collection-item collection-item--guide" src="/assets/devocional.webp" alt="Guia devocional" loading="lazy" />
-    <img className="collection-item collection-item--stars" src="/assets/estrelas.webp" alt="Estrelinhas da jornada" loading="lazy" />
-    <img className="collection-item collection-item--color" src="/assets/novos/livro-colorir.jpg" alt="Livro de colorir" loading="lazy" />
-    <img className="collection-item collection-item--games" src="/assets/novos/natal-proposito.jpg" alt="Natal com Propósito: jogos e dinâmicas em família" loading="lazy" />
-    <img className="collection-item collection-item--recipes" src="/assets/novos/receitas-natalinas.jpg" alt="Receitas natalinas para crianças" loading="lazy" />
+    <img className="collection-item collection-item--poster" src={posterImage} alt="Pôster do Advento" loading="lazy" />
+    <img className="collection-item collection-item--guide" src={devocionalImage} alt="Guia devocional" loading="lazy" />
+    <img className="collection-item collection-item--stars" src={estrelasImage} alt="Estrelinhas da jornada" loading="lazy" />
+    <img className="collection-item collection-item--color" src={livroColorirImage} alt="Livro de colorir" loading="lazy" />
+    <img className="collection-item collection-item--games" src={natalPropositoImage} alt="Natal com Propósito: jogos e dinâmicas em família" loading="lazy" />
+    <img className="collection-item collection-item--recipes" src={receitasNatalinasImage} alt="Receitas natalinas para crianças" loading="lazy" />
   </div>;
 }
 
 function PageFlip() {
   const pages = [
-    ['/assets/novos/devocional-dia-22.jpg', 'Dia 22 — Vamos espalhar o amor!'],
-    ['/assets/novos/devocional-dia-23.jpg', 'Dia 23 — É tempo de celebrar!'],
-    ['/assets/novos/devocional-dia-24.jpg', 'Dia 24 — Jesus é o maior presente!']
+    [devocionalDia22Image, 'Dia 22 — Vamos espalhar o amor!'],
+    [devocionalDia23Image, 'Dia 23 — É tempo de celebrar!'],
+    [devocionalDia24Image, 'Dia 24 — Jesus é o maior presente!']
   ];
   const [page, setPage] = useState(0);
   const move = direction => setPage(current => (current + direction + pages.length) % pages.length);
