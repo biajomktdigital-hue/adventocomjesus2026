@@ -1,4 +1,4 @@
-# Advento com Jesus — deploy no Vercel
+# Advento com Jesus V4 enxuta — deploy no Vercel
 
 Projeto Vite + React pronto para implantação.
 
@@ -30,6 +30,8 @@ vercel --prod
 - Saída: `dist`
 - Checkouts GGCheckout configurados
 - Script de UTMs da UTMify instalado no `index.html`
-- Assets e fontes armazenados em `public`
+- Arquivos de código, imagens e fontes no mesmo nível da pasta, mantendo o formato plano que já funcionou no Vercel
+- Imagem social `social-preview.png` configurada
+- Pixel de otimização e script de UTMs da UTMify preservados
 
 Antes de divulgar a página, configure a integração nativa da UTMify nos dois checkouts e substitua os links pendentes de Termos de Uso e Política de Privacidade.

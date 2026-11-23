@@ -158,54 +158,56 @@ function OfferCard({ offer, featured = false }) {
 export default function App() {
   return <>
     <main>
-      <section className="hero"><div className="content content--860 hero-flow">
-        <p className="hero-pill"><span aria-hidden="true" />{content.hero.badge}</p><h1>{content.hero.title}</h1>
-        <div className="hero-media"><ProductComposition /></div><p className="hero-sub">{content.hero.subtitle}</p>
-        <CTA label="QUERO VER OS MATERIAIS" href="#previas" />
-        <ul className="hero-bullets">{content.hero.bullets.map(item => <li key={item}><Check size={20}/><span>{item}</span></li>)}</ul>
-        <p className="scope-line">{content.hero.amplitude}</p>
+      <section className="hero hero--lean"><div className="content content--1120 hero-lean-grid">
+        <div className="hero-lean-copy">
+          <p className="hero-pill"><span aria-hidden="true" />{content.hero.badge}</p>
+          <h1>{content.hero.title}</h1>
+          <p className="hero-sub">{content.hero.subtitle}</p>
+          <ul className="hero-bullets">{content.hero.bullets.map(item => <li key={item}><Check size={20}/><span>{item}</span></li>)}</ul>
+          <CTA label="ESCOLHER MEU KIT" href="#oferta" />
+          <div className="hero-commercial-facts" aria-label="Informações rápidas da oferta">
+            <span><strong>A partir de R$ 17</strong> pagamento único</span>
+            <span><strong>Acesso imediato</strong> por e-mail</span>
+            <span><strong>7 dias</strong> de garantia</span>
+          </div>
+        </div>
+        <div className="hero-media"><ProductComposition /></div>
       </div></section>
 
-      <section className="section pain"><div className="content content--880 section-flow">
-        <SectionTitle>{content.pain.title}<br/>{content.pain.emphasis}</SectionTitle><div className="ornament" aria-hidden="true"><span /></div>
-        <div className="pain-grid">{content.pains.map((item, index) => { const Icon = painIcons[index]; return <div className="pain-chip" key={item}><Icon size={18}/><span>{item}</span></div>; })}</div>
-        <p className="bridge"><strong>{content.pain.bridge}</strong></p>
+      <section className="section offer offer--early" id="oferta"><div className="content content--1120 section-flow">
+        <SectionTitle lead={content.offer.lead}>Escolha a experiência ideal para sua família</SectionTitle>
+        <div className="offer-summary"><p>{content.offer.summary} <strong>{content.offer.emphasis}</strong></p></div>
+        <div className="offer-plans">{comercial.offers.map((offer, index) => <OfferCard key={offer.name} offer={offer} featured={index === 1} />)}</div>
+        <p className="offer-close">{content.offer.pending}</p>
       </div></section>
 
-      <section className="section section--tint gallery" id="previas"><div className="content content--1180 section-flow">
-        <SectionTitle lead={content.gallerySection.lead}>{content.gallerySection.title}</SectionTitle>
+      <section className="section section--tint gallery gallery--lean" id="materiais"><div className="content content--1180 section-flow">
+        <SectionTitle lead="Veja de forma rápida o que compõe a jornada principal e os complementos do Kit Memorável.">Seis materiais prontos para usar no Advento</SectionTitle>
         <MaterialsMockup />
       </div></section>
 
-      <section className="section mechanism"><div className="content content--1120 section-flow">
-        <SectionTitle lead={content.mechanismSection.lead}>{content.mechanismSection.title}</SectionTitle>
-        <PageFlip />
-        <div className="mechanism-grid">{content.mechanism.map(([title, text], index) => { const Icon = mechanismIcons[index]; return <article key={title}><span className="mechanism-icon"><Icon size={25}/></span><h3>{title}</h3><p>{text}</p></article>; })}</div>
-        <p className="mechanism-close">{content.mechanismClose}</p><CTA />
+      <section className="section mechanism mechanism--lean"><div className="content content--1120 section-flow">
+        <SectionTitle lead="Abra o guia, viva o encontro e marque o avanço da família no pôster.">Uma jornada simples para cada dia do Advento</SectionTitle>
+        <div className="experience-grid">
+          <PageFlip />
+          <div className="experience-steps">{content.mechanism.slice(0, 3).map(([title, text], index) => { const Icon = mechanismIcons[index]; return <article key={title}><span className="mechanism-step">{index + 1}</span><span className="mechanism-icon"><Icon size={24}/></span><div><h3>{title}</h3><p>{text}</p></div></article>; })}</div>
+        </div>
+        <p className="mechanism-close">{content.mechanismClose}</p>
       </div></section>
 
-      <section className="usage-carousel" aria-label="Cenas ilustrativas de uso do material"><div className="content content--860 usage-heading"><p>NA ROTINA DA FAMÍLIA</p><h2>{content.usage.title}</h2><span>{content.usage.lead}</span></div>
-        <ScrollRail label="Formas de viver o Advento com Jesus" className="usage-rail" auto interval={3200}>{content.usage.photos.map(([src, alt]) => <figure className="usage-photo" key={src}><img src={src} alt={alt} loading="lazy"/></figure>)}</ScrollRail>
+      <section className="section section--tint lean-usage" aria-label="Cenas ilustrativas de uso do material"><div className="content content--1040 section-flow">
+        <SectionTitle lead={content.usage.lead}>Do arquivo para a rotina da família</SectionTitle>
+        <div className="lean-usage-grid">{content.usage.photos.slice(0, 3).map(([src, alt]) => <figure key={src}><img src={src} alt={alt} loading="lazy"/><figcaption>{alt}</figcaption></figure>)}</div>
         <p className="usage-caption">Cenas ilustrativas de uso. Não representam depoimentos ou clientes.</p>
-      </section>
+      </div></section>
 
-      <section className="section mid-pitch"><div className="content content--1040 mid-pitch-grid"><div className="mid-pitch-media mid-pitch-media--collection"><CollectionComposition compact /></div><div className="mid-pitch-copy"><h2>{content.midPitch.title}</h2><p>{content.midPitch.text}</p><CTA /></div></div></section>
+      <section className="section bonuses bonuses--lean"><div className="content content--1040 section-flow"><header className="bonus-intro"><p>EXCLUSIVOS DO KIT NATAL MEMORÁVEL</p><h2>TRÊS COMPLEMENTOS PARA PROLONGAR OS MOMENTOS EM FAMÍLIA</h2><span><Gift size={17}/>{content.complements.length} MATERIAIS ADICIONAIS</span></header><div className="bonus-grid bonus-grid--three">{content.complements.map(item => <article className="bonus-card" key={item.title}><div className="bonus-card-top"><p className="bonus-num">{item.number}</p><div className="bonus-art bonus-art--single"><div className="bonus-book"><img src={item.image} alt={item.alt} loading="lazy"/></div></div></div><div className="bonus-card-body"><h3>{item.title}</h3><p>{item.text}</p><div className="bonus-gain"><Check size={18}/><span>{item.gain}</span></div><div className="bonus-price complement-value"><strong>INCLUÍDO NO KIT MEMORÁVEL</strong></div></div></article>)}</div></div></section>
 
-      <section className="section audiences"><div className="content content--1040 section-flow"><SectionTitle lead={content.audienceSection.lead}>{content.audienceSection.title}</SectionTitle><div className="audience-grid">{content.audiences.map(([title, text]) => <article key={title}><span><Check size={17}/></span><div><h3>{title}</h3><p>{text}</p></div></article>)}</div></div></section>
+      <section className="section purchase-safety"><div className="content content--1000 safety-layout"><article className="guarantee-card"><div className="guarantee-seal" aria-label="Garantia de 7 dias"><ShieldCheck size={30}/><strong>7</strong><span>DIAS</span><small>DE GARANTIA</small></div><h2>{comercial.guarantee.title}</h2><p>{comercial.guarantee.text}</p></article><div className="safety-cards"><article><Mail size={30}/><div><h3>Receba no e-mail</h3><p>Após a confirmação do pagamento, você recebe os arquivos digitais no e-mail informado na compra.</p></div></article><article><Printer size={30}/><div><h3>Baixe e imprima</h3><p>Abra os PDFs, imprima os materiais e organize o primeiro encontro da jornada.</p></div></article></div></div></section>
 
-      <section className="section section--tint receive"><div className="content content--1000 section-flow"><SectionTitle>{content.benefitsSection.title}</SectionTitle><div className="receive-media"><CollectionComposition /></div><article className="receive-card"><p className="access-badge">{content.benefitsSection.badge}</p><h3>{content.benefitsSection.name}</h3><p>{content.benefitsSection.summary}</p><ul>{content.benefits.map(item => <li key={item}><Check size={20}/><span>{item}</span></li>)}</ul></article></div></section>
+      <section className="section faq faq--lean"><div className="content content--780 section-flow"><SectionTitle>Perguntas frequentes</SectionTitle><div className="faq-list">{content.faqs.map(([question, answer]) => <details key={question}><summary>{question}</summary><p>{answer}</p></details>)}</div></div></section>
 
-      <section className="section bonuses"><div className="content content--980 section-flow"><header className="bonus-intro"><p>NO KIT NATAL MEMORÁVEL</p><h2>MAIS MOMENTOS PARA VIVER JUNTOS</h2><span><Gift size={17}/>{content.complements.length} COMPLEMENTOS INCLUÍDOS</span></header><div className="bonus-grid bonus-grid--three">{content.complements.map(item => <article className="bonus-card" key={item.title}><div className="bonus-card-top"><p className="bonus-num">{item.number}</p><div className="bonus-art bonus-art--single"><div className="bonus-book"><img src={item.image} alt={item.alt} loading="lazy"/></div></div></div><div className="bonus-card-body"><h3>{item.title}</h3><p>{item.text}</p><div className="bonus-gain"><Check size={18}/><span>{item.gain}</span></div><div className="bonus-price complement-value"><strong>INCLUÍDO NO KIT MEMORÁVEL</strong></div></div></article>)}</div></div></section>
-
-      <section className="section offer" id="oferta"><div className="content content--1120 section-flow"><SectionTitle lead={content.offer.lead}>{content.offer.title}</SectionTitle><div className="offer-summary"><p>{content.offer.summary} <strong>{content.offer.emphasis}</strong></p></div><div className="offer-plans">{comercial.offers.map((offer, index) => <OfferCard key={offer.name} offer={offer} featured={index === 1} />)}</div><p className="offer-close">{content.offer.pending}</p></div></section>
-
-      <section className="section purchase-safety"><div className="content content--1000 safety-layout"><article className="guarantee-card"><div className="guarantee-seal" aria-label="Garantia de 7 dias"><ShieldCheck size={30}/><strong>7</strong><span>DIAS</span><small>DE GARANTIA</small></div><h2>{comercial.guarantee.title}</h2><p>{comercial.guarantee.text}</p></article><div className="safety-cards"><article><Mail size={30}/><div><h3>Acesso por e-mail</h3><p>Após a confirmação do pagamento, os arquivos digitais são enviados para o e-mail informado na compra.</p></div></article><article><Printer size={30}/><div><h3>PDFs para baixar e imprimir</h3><p>Use os arquivos digitais e imprima os materiais necessários para cada momento da jornada.</p></div></article></div></div></section>
-
-      <section className="section section--tint access-steps"><div className="content content--980 section-flow"><SectionTitle>Como funciona depois da compra</SectionTitle><div className="steps-grid"><article><span>1</span><CreditCard/><h3>Escolha seu kit</h3><p>Selecione o Kit Natal Especial ou o Kit Natal Memorável.</p></article><article><span>2</span><Mail/><h3>Receba no e-mail</h3><p>{comercial.access}</p></article><article><span>3</span><MonitorSmartphone/><h3>Baixe e prepare</h3><p>Abra os PDFs, imprima o material e organize o primeiro encontro.</p></article></div><CTA /></div></section>
-
-      <section className="section faq"><div className="content content--780 section-flow"><SectionTitle>Perguntas frequentes</SectionTitle><div className="faq-list">{content.faqs.map(([question, answer]) => <details key={question}><summary>{question}</summary><p>{answer}</p></details>)}</div></div></section>
-
-      <section className="closing"><div className="content content--780 closing-inner"><p>{content.closing.eyebrow}</p><h2>{content.hero.title}</h2><p className="closing-copy">{content.closing.text}</p><CTA/><small>Material digital em PDF. Kit Especial R$ 17,00. Kit Memorável R$ 27,00.</small></div></section>
+      <section className="closing"><div className="content content--780 closing-inner"><p>{content.closing.eyebrow}</p><h2>Comece agora sua jornada do Advento com Jesus</h2><p className="closing-copy">{content.closing.text}</p><CTA label="ESCOLHER MEU KIT"/><small>Material digital em PDF. Kit Especial R$ 17,00. Kit Memorável R$ 27,00. Pagamento único.</small></div></section>
     </main>
     <footer className="footer"><div className="footer-inner"><p>Suporte: {comercial.supportEmail}</p><p>{comercial.company}</p><p className="footer-legal">Produto digital independente para uso familiar. Confira as condições comerciais antes da publicação.</p><nav><span>Termos: [LINK PENDENTE]</span><span>•</span><span>Privacidade: [LINK PENDENTE]</span></nav></div></footer>
   </>;
