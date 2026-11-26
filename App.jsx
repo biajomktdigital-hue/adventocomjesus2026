@@ -1,5 +1,5 @@
 import { Children, cloneElement, useEffect, useRef, useState } from 'react';
-import { BookOpen, Check, ChevronLeft, ChevronRight, CreditCard, Download, Gift, Heart, Mail, MonitorSmartphone, Printer, Scissors, ShieldCheck, Star, Users } from 'lucide-react';
+import { BookOpen, Check, ChevronLeft, ChevronRight, CreditCard, Download, Gift, Heart, Instagram, Mail, MonitorSmartphone, Printer, Scissors, ShieldCheck, Star, Users } from 'lucide-react';
 import { content } from './content.js';
 import { comercial } from './comercial.js';
 import posterImage from './poster.webp';
@@ -149,7 +149,12 @@ function OfferCard({ offer, featured = false }) {
     <p className="plan-badge">{offer.badge}</p><p className="plan-kicker">{offer.kicker}</p><h3>{offer.name}</h3>
     <div className="plan-mockup"><ProductComposition compact memorable={featured} /></div>
     <ul>{offer.items.map(item => <li key={item}><Check size={20}/><span>{item}</span></li>)}</ul>
-    <div className="price"><small>Pagamento único</small><strong>{offer.price}</strong></div>
+    <div className="price price--promo">
+      <span className="price-promo-label">OFERTA ESPECIAL DE ADVENTO</span>
+      <small>De <s>{offer.originalPrice}</s> por:</small>
+      <strong>{offer.price}</strong>
+      <span className="price-payment">Pagamento único, sem mensalidade</span>
+    </div>
     <CTA label={offer.cta} href={href} />
     <div className="payment-trust"><span><Mail size={18}/>Acesso por e-mail</span><span><Download size={18}/>PDF para baixar</span><span><Printer size={18}/>Pronto para imprimir</span></div>
   </article>;
@@ -164,15 +169,22 @@ export default function App() {
           <h1>{content.hero.title}</h1>
           <p className="hero-sub">{content.hero.subtitle}</p>
           <ul className="hero-bullets">{content.hero.bullets.map(item => <li key={item}><Check size={20}/><span>{item}</span></li>)}</ul>
-          <CTA label="ESCOLHER MEU KIT" href="#oferta" />
+          <CTA label="QUERO VIVER ESTA JORNADA EM FAMÍLIA" href="#oferta" />
           <div className="hero-commercial-facts" aria-label="Informações rápidas da oferta">
-            <span><strong>A partir de R$ 17</strong> pagamento único</span>
+            <span><strong>De R$ 29,90 por R$ 17</strong> oferta de entrada</span>
             <span><strong>Acesso imediato</strong> por e-mail</span>
             <span><strong>7 dias</strong> de garantia</span>
           </div>
         </div>
         <div className="hero-media"><ProductComposition /></div>
       </div></section>
+
+      <div className="urgency-marquee" role="region" aria-label="Últimos dias para adquirir">
+        <div className="urgency-marquee-track" aria-hidden="true">
+          {[...Array(8)].map((_, index) => <span key={index}>ÚLTIMOS DIAS PARA ADQUIRIR <Star size={17}/></span>)}
+        </div>
+        <span className="sr-only">Últimos dias para adquirir.</span>
+      </div>
 
       <section className="section offer offer--early" id="oferta"><div className="content content--1120 section-flow">
         <SectionTitle lead={content.offer.lead}>Escolha a experiência ideal para sua família</SectionTitle>
@@ -203,12 +215,12 @@ export default function App() {
 
       <section className="section bonuses bonuses--lean"><div className="content content--1040 section-flow"><header className="bonus-intro"><p>EXCLUSIVOS DO KIT NATAL MEMORÁVEL</p><h2>TRÊS COMPLEMENTOS PARA PROLONGAR OS MOMENTOS EM FAMÍLIA</h2><span><Gift size={17}/>{content.complements.length} MATERIAIS ADICIONAIS</span></header><div className="bonus-grid bonus-grid--three">{content.complements.map(item => <article className="bonus-card" key={item.title}><div className="bonus-card-top"><p className="bonus-num">{item.number}</p><div className="bonus-art bonus-art--single"><div className="bonus-book"><img src={item.image} alt={item.alt} loading="lazy"/></div></div></div><div className="bonus-card-body"><h3>{item.title}</h3><p>{item.text}</p><div className="bonus-gain"><Check size={18}/><span>{item.gain}</span></div><div className="bonus-price complement-value"><strong>INCLUÍDO NO KIT MEMORÁVEL</strong></div></div></article>)}</div></div></section>
 
-      <section className="section purchase-safety"><div className="content content--1000 safety-layout"><article className="guarantee-card"><div className="guarantee-seal" aria-label="Garantia de 7 dias"><ShieldCheck size={30}/><strong>7</strong><span>DIAS</span><small>DE GARANTIA</small></div><h2>{comercial.guarantee.title}</h2><p>{comercial.guarantee.text}</p></article><div className="safety-cards"><article><Mail size={30}/><div><h3>Receba no e-mail</h3><p>Após a confirmação do pagamento, você recebe os arquivos digitais no e-mail informado na compra.</p></div></article><article><Printer size={30}/><div><h3>Baixe e imprima</h3><p>Abra os PDFs, imprima os materiais e organize o primeiro encontro da jornada.</p></div></article></div></div></section>
+      <section className="section purchase-safety"><div className="content content--1000 safety-flow"><div className="safety-layout"><article className="guarantee-card"><div className="guarantee-seal" aria-label="Garantia de 7 dias"><ShieldCheck size={30}/><strong>7</strong><span>DIAS</span><small>DE GARANTIA</small></div><h2>{comercial.guarantee.title}</h2><p>{comercial.guarantee.text}</p></article><div className="safety-cards"><article><Mail size={30}/><div><h3>Receba no e-mail</h3><p>Após a confirmação do pagamento, você recebe os arquivos digitais no e-mail informado na compra.</p></div></article><article><Printer size={30}/><div><h3>Baixe e imprima</h3><p>Abra os PDFs, imprima os materiais e organize o primeiro encontro da jornada.</p></div></article></div></div><a className="instagram-trust" href={comercial.instagram.url} target="_blank" rel="noopener noreferrer" aria-label={`Conheça o Instagram ${comercial.instagram.handle}`}><span className="instagram-trust-icon"><Instagram size={26}/></span><span><small>CONHEÇA QUEM CRIOU ESTE MATERIAL</small><strong>{comercial.instagram.handle}</strong><em>Acompanhe o perfil e conheça mais sobre o trabalho.</em></span></a></div></section>
 
       <section className="section faq faq--lean"><div className="content content--780 section-flow"><SectionTitle>Perguntas frequentes</SectionTitle><div className="faq-list">{content.faqs.map(([question, answer]) => <details key={question}><summary>{question}</summary><p>{answer}</p></details>)}</div></div></section>
 
-      <section className="closing"><div className="content content--780 closing-inner"><p>{content.closing.eyebrow}</p><h2>Comece agora sua jornada do Advento com Jesus</h2><p className="closing-copy">{content.closing.text}</p><CTA label="ESCOLHER MEU KIT"/><small>Material digital em PDF. Kit Especial R$ 17,00. Kit Memorável R$ 27,00. Pagamento único.</small></div></section>
+      <section className="closing"><div className="content content--780 closing-inner"><p>{content.closing.eyebrow}</p><h2>Comece agora sua jornada do Advento com Jesus</h2><p className="closing-copy">{content.closing.text}</p><CTA label="QUERO VIVER ESTA JORNADA EM FAMÍLIA"/><small>Material digital em PDF. Kit Especial de R$ 29,90 por R$ 17,00. Kit Memorável de R$ 39,90 por R$ 27,00. Pagamento único.</small></div></section>
     </main>
-    <footer className="footer"><div className="footer-inner"><p>Suporte: {comercial.supportEmail}</p><p>{comercial.company}</p><p className="footer-legal">Produto digital independente para uso familiar. Confira as condições comerciais antes da publicação.</p><nav><span>Termos: [LINK PENDENTE]</span><span>•</span><span>Privacidade: [LINK PENDENTE]</span></nav></div></footer>
+    <footer className="footer"><div className="footer-inner"><p>Suporte: {comercial.supportEmail}</p><p>{comercial.company}</p><a className="footer-instagram" href={comercial.instagram.url} target="_blank" rel="noopener noreferrer"><Instagram size={17}/><span>{comercial.instagram.handle}</span></a><p className="footer-legal">Produto digital independente para uso familiar. Confira as condições comerciais antes da publicação.</p><nav><span>Termos: [LINK PENDENTE]</span><span>•</span><span>Privacidade: [LINK PENDENTE]</span></nav></div></footer>
   </>;
 }

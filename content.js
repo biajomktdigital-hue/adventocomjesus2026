@@ -8,11 +8,11 @@ import receitasNatalinasImage from './receitas-natalinas.jpg';
 
 export const content = {
   hero: {
-    badge: 'ADVENTO COM JESUS: UMA JORNADA DE FÉ E AMOR',
-    title: 'Descubra uma jornada bíblica de 24 dias para viver um Natal com Jesus no centro, sem criar histórias e atividades do zero.',
-    subtitle: 'Guia do Advento, histórias da criação ao nascimento de Jesus, pôster e 24 estrelinhas ajudam você a conduzir encontros com seus filhos sem preparar tudo sozinha.',
-    bullets: ['Conduza os encontros mesmo quando a rotina já está cheia.', 'Conte uma história bíblica e cole a estrela correspondente no pôster.', 'Mantenha a jornada organizada sem procurar atividades diferentes todos os dias.'],
-    amplitude: 'Da criação ao nascimento de Jesus: 24 dias de histórias, conversa e participação em família.'
+    badge: 'UMA JORNADA PRONTA PARA TODA A SUA FAMÍLIA',
+    title: 'Transforme a espera pelo Natal em 24 dias de conexão, presença e memórias com seus filhos — sem precisar planejar tudo sozinha.',
+    subtitle: 'Você queria preparar um Advento especial, mas a correria não deixou tempo? Fique tranquila. Nós organizamos toda a jornada para você: basta imprimir o material, reunir a família e viver um momento de cada vez.',
+    bullets: ['Crie um momento de conexão com seus filhos todos os dias.', 'Tenha uma experiência preparada sem pesquisar ou planejar do zero.', 'Transforme a espera pelo Natal em conversas, participação e lembranças em família.'],
+    amplitude: '24 dias de presença, participação e memórias para viver em família.'
   },
   pain: { title: 'Preparar o Advento em família', emphasis: 'não precisa virar mais uma tarefa pesada.', bridge: 'Quem completa a jornada até o Natal segue um roteiro preparado, que transforma intenção em um encontro possível por dia.' },
   pains: ['Deixar para depois', 'Pesquisar histórias todo dia', 'Criar atividades do zero', 'Separar arquivos espalhados', 'Prender a atenção das crianças', 'Perder Jesus na correria'],

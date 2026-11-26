@@ -1,4 +1,4 @@
-# Advento com Jesus V4 enxuta — deploy no Vercel
+# Advento com Jesus V5 — nova roupagem e deploy no Vercel
 
 Projeto Vite + React pronto para implantação.
 
@@ -29,6 +29,9 @@ vercel --prod
 - Build: `pnpm run build`
 - Saída: `dist`
 - Checkouts GGCheckout configurados
+- Hero atualizado para a narrativa de presença e conexão em família
+- Preços promocionais e faixa móvel de últimos dias configurados
+- Instagram `@jessicabiajo` conectado como elemento de confiança
 - Script de UTMs da UTMify instalado no `index.html`
 - Arquivos de código, imagens e fontes no mesmo nível da pasta, mantendo o formato plano que já funcionou no Vercel
 - Imagem social `social-preview.png` configurada

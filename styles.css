@@ -257,6 +257,39 @@ body{overflow-x:hidden}
 .bonuses--lean .bonus-intro{margin-bottom:6px}
 .faq--lean .section-flow{gap:28px}
 
+/* V5: narrativa de presença e ancoragem promocional dos kits */
+.hero--lean{background:
+  radial-gradient(circle at 88% 16%,rgba(247,190,33,.22),transparent 26%),
+  radial-gradient(circle at 8% 84%,rgba(206,32,41,.08),transparent 25%),
+  linear-gradient(135deg,#fffdf7 0,#fff5dc 58%,#f7e7bd 100%)}
+.hero--lean .hero-pill{border-color:#e1b845;background:rgba(255,255,255,.88);color:var(--red);letter-spacing:.035em}
+.hero--lean .hero-pill span{background:var(--red);box-shadow:0 0 0 4px rgba(206,32,41,.12)}
+.hero--lean h1{font-size:clamp(37px,4.35vw,54px);line-height:1.015}
+.hero--lean .hero-sub{color:#465365;line-height:1.58}
+.hero--lean .hero-bullets li{border-color:rgba(225,184,69,.62);background:rgba(255,255,255,.62)}
+.price--promo{position:relative;margin-top:34px;padding:27px 16px 5px;border:2px solid #f1c23c;border-radius:14px;background:linear-gradient(180deg,#fffaf0,#fff)}
+.price--promo .price-promo-label{position:absolute;top:0;left:50%;width:max-content;max-width:calc(100% - 22px);padding:7px 13px;border-radius:999px;background:var(--red);color:#fff;font-size:10.5px;font-weight:900;letter-spacing:.055em;transform:translate(-50%,-50%);box-shadow:0 7px 18px rgba(206,32,41,.22)}
+.price--promo small{font-size:15px;font-weight:700}
+.price--promo small s{color:#7f8997;font-size:19px;text-decoration-color:var(--red);text-decoration-thickness:2px}
+.price--promo strong{margin:6px 0 3px;font-size:62px}
+.price--promo .price-payment{color:var(--ink);font-size:12.5px;font-weight:800}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.urgency-marquee{position:relative;overflow:hidden;border-top:2px solid #f6cf58;border-bottom:2px solid #f6cf58;background:var(--red);color:#fff;box-shadow:0 9px 24px rgba(88,9,15,.16)}
+.urgency-marquee-track{display:flex;width:max-content;animation:urgency-scroll 24s linear infinite;will-change:transform}
+.urgency-marquee-track span{display:flex;min-height:48px;align-items:center;gap:20px;padding:0 28px;font:800 15px/1 var(--font-title);letter-spacing:.08em;white-space:nowrap}
+.urgency-marquee-track svg{flex:none;color:var(--yellow);fill:var(--yellow)}
+@keyframes urgency-scroll{to{transform:translateX(-50%)}}
+.safety-flow{display:flex;flex-direction:column;gap:24px}
+.instagram-trust{display:flex;width:100%;align-items:center;justify-content:center;gap:16px;padding:18px 22px;border:1px solid #e4c057;border-radius:16px;background:linear-gradient(115deg,#fffaf0,#fff);color:var(--ink);text-align:left;text-decoration:none;box-shadow:0 10px 28px rgba(3,25,55,.08);transition:transform .18s ease,box-shadow .18s ease}
+.instagram-trust:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(3,25,55,.13)}
+.instagram-trust-icon{display:grid;flex:none;place-items:center;width:52px;height:52px;border-radius:15px;background:linear-gradient(145deg,#7638fa,#d62976 52%,#f8a53a);color:#fff;box-shadow:0 8px 18px rgba(168,39,124,.22)}
+.instagram-trust>span:last-child{display:flex;min-width:0;flex-direction:column}
+.instagram-trust small{color:var(--muted);font-size:10.5px;font-weight:900;letter-spacing:.09em}
+.instagram-trust strong{margin:2px 0;color:var(--ink);font:800 23px/1.1 var(--font-title)}
+.instagram-trust em{color:var(--muted);font-size:13px;font-style:normal}
+.footer-instagram{display:inline-flex;align-items:center;justify-content:center;gap:7px;color:#fff;text-decoration:none;font-weight:800}
+.footer-instagram:hover{text-decoration:underline}
+
 @media(max-width:900px){
   .hero-lean-grid{grid-template-columns:1fr;gap:24px;text-align:center}
   .hero-lean-copy{align-items:center}
@@ -284,5 +317,20 @@ body{overflow-x:hidden}
   .experience-steps article{display:grid;grid-template-columns:54px minmax(0,1fr);min-height:0;text-align:left}
   .experience-steps .mechanism-icon{margin:0}
   .lean-usage-grid{grid-template-columns:1fr;max-width:430px}
+  .hero--lean h1{font-size:33px}
+  .price--promo{margin-top:32px;padding-inline:10px}
+  .price--promo .price-promo-label{font-size:9px}
+  .price--promo strong{font-size:52px}
+  .urgency-marquee-track span{min-height:44px;padding-inline:20px;font-size:13px}
+  .instagram-trust{justify-content:flex-start;padding:16px}
+  .instagram-trust-icon{width:46px;height:46px}
+  .instagram-trust strong{font-size:20px}
+  .instagram-trust em{font-size:11.5px}
   .lean-usage-grid img{aspect-ratio:4/5}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .urgency-marquee-track{width:100%;justify-content:center;animation:none}
+  .urgency-marquee-track span{display:none}
+  .urgency-marquee-track span:first-child{display:flex}
 }
